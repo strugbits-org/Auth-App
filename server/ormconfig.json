@@ -1,0 +1,10 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "auth-app",
+  "password": "090078601",
+  "database": "auth-app-db",
+  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "synchronize": true
+}
