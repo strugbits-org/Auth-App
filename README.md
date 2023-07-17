@@ -7,6 +7,7 @@ How to run it?
 
 	- Download docker desktop
 	- Add current user to 'docker-users' group in order to start the engine
+	- Update wsl
 	- Start docker engine
 
 - Backend
