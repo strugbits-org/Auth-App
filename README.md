@@ -3,6 +3,12 @@ Simple user authentication feature using NestJS and React (Next.js).
 
 How to run it?
 
+- Docker Setup
+
+	- Download docker desktop
+	- Add current user to 'docker-users' group in order to start the engine
+	- Start docker engine
+
 - Backend
 
 	- Please make sure the docker is installed.
