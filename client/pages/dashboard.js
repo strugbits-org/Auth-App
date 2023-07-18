@@ -2,19 +2,14 @@ import React, { useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { Button, Typography } from "@mui/material";
+import { AuthWrapper } from "../helpers/AuthWrapper";
 
 const dashboard = () => {
-  // using data and status from useSession hook
-  const { data, status } = useSession();
+  // using data from useSession hook
+  const { data } = useSession();
 
   const router = useRouter();
 
-  // if status is unauthenticated, redirect to login page
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/");
-    }
-  }, [data, status]);
   return (
     <div
       style={{
@@ -46,4 +41,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default AuthWrapper(dashboard);
