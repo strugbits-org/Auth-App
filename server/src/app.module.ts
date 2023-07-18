@@ -4,14 +4,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './module/user.module';
 import { AuthModule } from './module/auth.module';
-import { jwtConstants } from './constants';
 import { AuthMiddleware } from './middleware/auth.middleware';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '172.18.230.107',
+      host: '172.26.248.185',
       port: 5432,
       username: 'postgres',
       password: 'admin',

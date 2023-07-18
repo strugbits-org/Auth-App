@@ -17,13 +17,13 @@ export default NextAuth({
       async authorize(credentials) {
         try {
           const res = await axios.post("/auth/login", credentials);
-          if (res.data.user) {
-            console.log(res.data, "res");
-            return Promise.resolve(res.data);
+          if (res?.data?.user) {
+            console.log(res?.data, "res");
+            return Promise.resolve(res?.data);
           }
         } catch (error) {
           return Promise.reject(
-            error.response.data.message || error.message || "error"
+            error?.response?.data?.message || error?.message || "error"
           );
         }
       },

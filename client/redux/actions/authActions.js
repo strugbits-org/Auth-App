@@ -23,26 +23,26 @@ export const signup = (user) => {
   };
 };
 
-export const signin = (user) => {
-  return async (dispatch) => {
-    dispatch({
-      type: authConstants.SIGNIN_REQUEST,
-    });
+// export const signin = (user) => {
+//   return async (dispatch) => {
+//     dispatch({
+//       type: authConstants.SIGNIN_REQUEST,
+//     });
 
-    try {
-      const res = await axios.post("/auth/login", user);
-      if (res) {
-        dispatch({
-          type: authConstants.SIGNIN_SUCCESS,
-          payload: res.data,
-        });
-        return res.data;
-      }
-    } catch (err) {
-      dispatch({
-        type: authConstants.SIGNIN_FAIL,
-        payload: err.response.data.message,
-      });
-    }
-  };
-};
+//     try {
+//       const res = await axios.post("/auth/login", user);
+//       if (res) {
+//         dispatch({
+//           type: authConstants.SIGNIN_SUCCESS,
+//           payload: res.data,
+//         });
+//         return res.data;
+//       }
+//     } catch (err) {
+//       dispatch({
+//         type: authConstants.SIGNIN_FAIL,
+//         payload: err.response.data.message,
+//       });
+//     }
+//   };
+// };

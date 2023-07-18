@@ -1,8 +1,9 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import { AuthService } from '../service/auth.service';
-import { jwtConstants } from '../constants';
 import { verify } from 'jsonwebtoken';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 interface User {
   id: number;
@@ -27,7 +28,7 @@ export class AuthMiddleware implements NestMiddleware {
     const token = req.headers['authorization'];
     if (token) {
       try {
-        const decodedToken = verify(token, jwtConstants.secret) as DecodedToken;
+        const decodedToken = verify(token, process.env.JWT_SECRET) as DecodedToken;
         const user = await this.authService.validateUser(decodedToken.email);
         res.locals.user = user;
       } catch (error) {
