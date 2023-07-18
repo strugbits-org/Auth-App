@@ -6,7 +6,7 @@ export function AuthWrapper(WrappedComponent) {
     const router = useRouter();
     const { status } = useSession();
     const checkAuthentication = async () => {
-      if (status != "authenticated") {
+      if (status !== "authenticated") {
         router.push("/");
       }
     };

@@ -6,17 +6,17 @@ export function UnAuthWrapper(WrappedComponent) {
     const router = useRouter();
     const { status } = useSession();
     const checkAuthentication = async () => {
-      if (status == "authenticated") {
-        console.log("authenticated");
+      if (status !== "unauthenticated") {
+        router.push("/dashboard");
       }
     };
     // Perform authentication check here
     useEffect(() => {
       checkAuthentication();
-    }, []);
+    }, [status]);
 
-    if (status == "authenticated") {
-      router.push("/dashboard");
+    if (status !== "unauthenticated") {
+      return null; // Return null while authentication is in progress or user is not authenticated
     }
 
     return <WrappedComponent {...props} />;
