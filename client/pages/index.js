@@ -9,10 +9,11 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { UnAuthWrapper } from "../helpers/UnAuthWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+const Home = () => {
   const router = useRouter();
   const { status } = useSession();
   const handleSubmit = async (values) => {
@@ -88,6 +89,7 @@ export default function Home() {
             value={formik.values.email}
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
+            autoComplete="off"
           />
           <TextField
             label="Password"
@@ -99,6 +101,7 @@ export default function Home() {
             value={formik.values.password}
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
+            autoComplete="off"
           />
           <Button
             variant="contained"
@@ -124,4 +127,6 @@ export default function Home() {
       </Container>
     </>
   );
-}
+};
+
+export default UnAuthWrapper(Home);

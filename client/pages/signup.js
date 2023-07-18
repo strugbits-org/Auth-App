@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { UnAuthWrapper } from "../helpers/UnAuthWrapper";
 const Signup = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -81,6 +82,7 @@ const Signup = () => {
           onChange={formik.handleChange}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          autoComplete="off"
         />
         <TextField
           label="Email"
@@ -92,6 +94,7 @@ const Signup = () => {
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          autoComplete="off"
         />
         <TextField
           label="Password"
@@ -103,6 +106,7 @@ const Signup = () => {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          autoComplete="off"
         />
         <Button
           variant="contained"
@@ -129,4 +133,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default UnAuthWrapper(Signup);
